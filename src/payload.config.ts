@@ -3,6 +3,7 @@ import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
@@ -89,4 +90,16 @@ export default buildConfig({
     },
     tasks: [],
   },
+  email: nodemailerAdapter({
+    defaultFromAddress: 'no-reply@payload-starter.com',
+    defaultFromName: 'Website Contact Form',
+    transportOptions: {
+      host: process.env.SMTP_HOST, // e.g. email-smtp.ap-southeast-1.amazonaws.com
+      port: 587,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    },
+  }),
 })
