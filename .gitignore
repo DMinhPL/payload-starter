@@ -20,3 +20,13 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+
+# AI Supporter
+.agents/
+.claude/
+.gitnexus/
+AGENTS.md
+CLAUDE.md
+.knowns/
+KNOWNS.md
